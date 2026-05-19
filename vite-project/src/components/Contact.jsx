@@ -1,6 +1,16 @@
 import React from 'react';
 
 const Contact = () => {
+  const [FormData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const isFormValid = FormData.name && FormData.email && FormData.message;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       <section className='Contact min-h-[80vh] w-full pt-15' id='Contact'>
@@ -8,17 +18,29 @@ const Contact = () => {
           Contact Me
         </h2>
         <div className='contact-form w-full md:flex px-3  justify-center items-end gap-10'>
-          <form className='flex flex-col gap-4 bg-transparent p-5 rounded-xl w-full md:w-120'>
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-col gap-4 p-5 rounded-xl w-full md:w-120 
+  bg-transparent backdrop-blur-md border border-white/10 shadow-lg mb-4 md:mb-0'
+          >
             <input
               type='text'
               placeholder='Name'
-              className='p-3 rounded-lg outline-none border border-gray-300 '
+              className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200'
+              value={FormData.name}
+              onChange={(e) =>
+                setFormData({ ...FormData, name: e.target.value })
+              }
             />
 
             <input
               type='email'
               placeholder='Email'
-              className='p-3 rounded-lg outline-none border border-gray-300'
+              className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200'
+              value={FormData.email}
+              onChange={(e) =>
+                setFormData({ ...FormData, email: e.target.value })
+              }
             />
 
             <textarea
@@ -26,16 +48,24 @@ const Contact = () => {
               cols='30'
               rows='4'
               placeholder='Message'
-              className='p-3 rounded-lg outline-none border border-gray-300 resize-none'
+              className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200 resize-none'
+              value={FormData.message}
+              onChange={(e) =>
+                setFormData({ ...FormData, message: e.target.value })
+              }
             ></textarea>
 
-            <button className='bg-[var(--gr-color)] text-white py-3 rounded-lg hover:opacity-50 transition cursor-pointer'>
+            <button
+              type='submit'
+              disabled={!isFormValid}
+              className={`bg-[var(--gr-color)] text-white py-3 rounded-lg ${isFormValid ? 'hover:opacity-50 transition cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+            >
               Send Message
             </button>
           </form>
           <div className='pb-6 mx-12'>
             <span className='text-xl lg:text-2xl'>
-              <i class='fa-solid fa-location-dot text-[var(--gr-color)] text-xl lg:text-2xl  '></i>
+              <i className='fa-solid fa-location-dot text-[var(--gr-color)] text-xl lg:text-2xl  '></i>
               Nigeria
             </span>
             <div

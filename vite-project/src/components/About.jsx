@@ -11,14 +11,14 @@ const About = () => {
           <img
             src='../images/aboutimg3.jpeg'
             alt=''
-            className='w-120 h-70 lg:w-120 lg:h-100 rounded-lg object-cover'
+            className='w-full md:w-120 h-70 lg:w-120 lg:h-100 rounded-lg object-cover'
           />
         </div>
         <div className='about-text max-w-110 xl:max-w-160 py-8  mx-auto'>
           <h2 className='text-[var(--gr-color)] text-3xl lg:text-4xl font-bold mb-4 lg:mb-12 text-center lg:text-left font-sans'>
             About Me
           </h2>
-          <p className='text-lg lg:text-2xl text-center lg:text-left '>
+          <p className='text-lg lg:text-2xl  text-left '>
             Hi there! I’m Ojekunle David-joy, a dedicated Front-End Developer
             passionate about transforming innovative ideas into intuitive and
             visually appealing websites.
