@@ -1,15 +1,36 @@
 import React from 'react';
 
 const Contact = () => {
-  const [FormData, setFormData] = React.useState({
+  const [formData, setFormData] = React.useState({
     name: '',
     email: '',
     message: '',
   });
-  const isFormValid = FormData.name && FormData.email && FormData.message;
+  const isFormValid = formData.name && formData.email && formData.message;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:5000/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      alert(data.message);
+
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
   return (
     <>
@@ -27,9 +48,9 @@ const Contact = () => {
               type='text'
               placeholder='Name'
               className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200'
-              value={FormData.name}
+              value={formData.name}
               onChange={(e) =>
-                setFormData({ ...FormData, name: e.target.value })
+                setFormData({ ...formData, name: e.target.value })
               }
             />
 
@@ -37,9 +58,9 @@ const Contact = () => {
               type='email'
               placeholder='Email'
               className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200'
-              value={FormData.email}
+              value={formData.email}
               onChange={(e) =>
-                setFormData({ ...FormData, email: e.target.value })
+                setFormData({ ...formData, email: e.target.value })
               }
             />
 
@@ -49,16 +70,16 @@ const Contact = () => {
               rows='4'
               placeholder='Message'
               className='p-3 rounded-lg outline-none border border-white/20 bg-white/5 text-white placeholder-gray-400 focus:border-[var(--gr-color)] transition-colors duration-200 resize-none'
-              value={FormData.message}
+              value={formData.message}
               onChange={(e) =>
-                setFormData({ ...FormData, message: e.target.value })
+                setFormData({ ...formData, message: e.target.value })
               }
             ></textarea>
 
             <button
               type='submit'
               disabled={!isFormValid}
-              className={`bg-[var(--gr-color)] text-white py-3 rounded-lg ${isFormValid ? 'hover:opacity-50 transition cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+              className={`bg-[var(--gr-color)] text-white py-3 rounded-lg ${isFormValid ? 'hover:opacity-80 transition cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
             >
               Send Message
             </button>
