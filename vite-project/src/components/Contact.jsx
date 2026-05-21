@@ -6,31 +6,33 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [error, setError] = React.useState('');
+  const [success, setSuccess] = React.useState('');
+
   const isFormValid = formData.name && formData.email && formData.message;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
 
     try {
       const response = await fetch('http://localhost:5000/send', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      alert(data.message);
 
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
+      if (!response.ok) {
+        setError(data.message);
+        return;
+      }
+
+      setSuccess(data.message);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {}
   };
   return (
     <>
@@ -44,6 +46,12 @@ const Contact = () => {
             className='flex flex-col gap-4 p-5 rounded-xl w-full md:w-120 
   bg-transparent backdrop-blur-md border border-white/10 shadow-lg mb-4 md:mb-0'
           >
+            {error && (
+              <p className='text-red-500 text-sm text-center'>{error}</p>
+            )}
+            {success && (
+              <p className='text-green-500 text-sm text-center'>{success}</p>
+            )}
             <input
               type='text'
               placeholder='Name'
