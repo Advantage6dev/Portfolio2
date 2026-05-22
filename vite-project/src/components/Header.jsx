@@ -57,7 +57,7 @@ const Header = () => {
               </a>
             </button>
             <button className=' dl-btn bg-transparent hover:text-[var(--gray)] '>
-              <a href='/Ojekunle-David-Joy-CV.pdf' download>
+              <a href='/OJEKUNLE-DAVID-CV.pdf' download>
                 Download CV
               </a>
             </button>
