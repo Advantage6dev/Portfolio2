@@ -8,7 +8,11 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://davidportfolio-one.vercel.app',
+  }),
+);
 app.use(express.json());
 
 app.post('/send', async (req, res) => {
