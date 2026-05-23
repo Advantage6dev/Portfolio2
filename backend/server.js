@@ -7,6 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.use(
   cors({
@@ -36,24 +37,11 @@ app.post('/send', async (req, res) => {
       });
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'ojekunledavidprofile@gmail.com',
       subject: `New message from ${name}`,
-      text: `
-     Name: ${name}
-     Email: ${email}
-     Message:
-     ${message}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     });
 
     res.status(200).json({
