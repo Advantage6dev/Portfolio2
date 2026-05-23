@@ -67,7 +67,7 @@ const Header = () => {
           <img
             src='../images/profile-img.jpeg'
             alt='ProfileImg'
-            className='w-full h-30 rounded-full object-cover'
+            className='w-full h-70 rounded-full object-cover'
           />
         </div>
       </header>
