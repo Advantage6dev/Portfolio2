@@ -10,7 +10,7 @@ const Header = () => {
       >
         <div
           className='headerImg w-60 md:w-80 mx-auto text-center
-         lg:hidden rounded-full '
+         lg:hidden rounded-full overflow-hidden'
         >
           <img
             src='../images/profile-img.jpeg'
@@ -63,7 +63,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className='headerImg w-80 hidden lg:block rounded-full'>
+        <div className='headerImg w-80 hidden lg:block rounded-full overflow-hidden'>
           <img
             src='../images/profile-img.jpeg'
             alt='ProfileImg'
