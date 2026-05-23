@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = React.useState({
@@ -8,6 +8,23 @@ const Contact = () => {
   });
   const [error, setError] = React.useState('');
   const [success, setSuccess] = React.useState('');
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError('');
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const isFormValid = formData.name && formData.email && formData.message;
 
