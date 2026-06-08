@@ -63,7 +63,7 @@ const Navbar = () => {
         className={`nav-links  md:flex space-x-6 lg:space-x-16 list-none ${open ? 'open' : ''}`}
       >
         <i
-          className='fas fa-close text-[var(--gr-color)] text-2xl close hover:text-[var(--gray)] '
+          className='fas fa-close text-[var(--gr-color)] text-2xl close hover:text-[var(--gray)]'
           onClick={() => setOpen(false)}
         ></i>
         <li
