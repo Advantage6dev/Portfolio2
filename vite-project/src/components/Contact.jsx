@@ -64,7 +64,7 @@ const Contact = () => {
           <form
             onSubmit={handleSubmit}
             className='flex flex-col gap-4 p-5 rounded-xl w-full md:w-120 
-  bg-transparent backdrop-blur-md border border-white/10 shadow-lg mb-4 md:mb-0 relative z-0'
+  bg-transparent border border-white/10 shadow-lg mb-4 md:mb-0 relative z-0'
           >
             {error && (
               <p className='text-red-500 text-sm text-center'>{error}</p>
