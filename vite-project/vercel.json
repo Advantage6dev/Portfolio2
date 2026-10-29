@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://ojekunledavidjoy-portfolio.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}
