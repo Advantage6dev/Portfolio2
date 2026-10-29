@@ -3,12 +3,12 @@
     {
       "source": "/",
       "destination": "https://ojekunledavidjoy-portfolio.vercel.app/",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/(.*)",
       "destination": "https://ojekunledavidjoy-portfolio.vercel.app/$1",
-      "permanent": false
+      "permanent": true
     }
   ]
 }
