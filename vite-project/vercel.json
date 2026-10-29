@@ -1,9 +1,14 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
-      "destination": "https://ojekunledavidjoy-portfolio.vercel.app/:path*",
-      "permanent": true
+      "source": "/",
+      "destination": "https://ojekunledavidjoy-portfolio.vercel.app/",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://ojekunledavidjoy-portfolio.vercel.app/$1",
+      "permanent": false
     }
   ]
 }
